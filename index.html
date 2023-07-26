@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css  ">
+    <link rel="stylesheet" href="studentapp.css">
+    
+    <link rel="shortcut icon" href="images/studentlogo1.jpg" type="image/x-icon">
+    <title>The Career</title>
+</head>
+<body>
+    <!-- Navigation section -->
+    <header>
+        <nav>
+            <div>
+                <img src="images/studentlogo1.jpg" alt="">
+                <h4 class="logo">The Career</h4>
+            </div>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="loginuserapp.html">Login</a></li>
+                <li><a href="signupuserapp.html">Sign Up</a></li>
+                <li><a href="adminlogin.html" onclick="admininfo()">Admin Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Banner-Section -->
+    <section id="banner-section">
+        <div class="container">
+            <!-- <div class="banner"><img class="banner-image" src="../images/banner-image..jpg" alt=""></div> -->
+            <div class="banner">
+                <h1>Are You Looking for Good Opportunity to Learn?</h1>
+                <h2>So You are in a Right Place.</h2>
+            </div>
+        </div>
+    </section>
+    <section id="Alumini-section">
+        <div class="container">
+            <h1>Our Some Famous Alumini</h1>
+            <div class="boxes">
+                <div class="box">
+                    <div class="image"><img src="images/reading-benedict-cumberbatch.gif" alt=""></div>
+                    <h2>Stephen Strange</h2>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                </div>
+                <div class="box">
+                    <div class="image"><img src="images/antman.gif" alt=""></div>
+                    <h2>Scott Lang</h2>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                </div>
+                <div class="box">
+                    <div class="image"><img src="images/spiderman.gif" alt=""></div>
+                    <h2>Peter Parker</h2>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-content">
+            <h5>@Copyright <span>The Career</span> all Right Reserved.</h5>
+            <div class="icons">
+                <div class="ficon"><i class="fa fa-twitter fonticon " aria-hidden="true"></i></div>
+                <div class="ficon"><i class="fa fa-facebook fonticon" aria-hidden="true"></i></div>
+                <div class="ficon"><i class="fa fa-youtube-play fonticon" aria-hidden="true"></i></div>
+                <div class="ficon"><i class="fa fa-instagram fonticon" aria-hidden="true"></i></div>
+                <div class="ficon"><i class="fa fa-whatsapp fonticon" aria-hidden="true"></i></div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        let array = [];
+        function admininfo(){
+            array = [...array,{"aemail" : "admin@gmail.com", "apassword" : "admin123"}];
+            localStorage.setItem("admin_login", JSON.stringify(array));
+        }
+    </script>
+</body>
+
+</html>

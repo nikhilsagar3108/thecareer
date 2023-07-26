@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/studentlogo1.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css  ">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <title>Admin</title>
+</head>
+
+<body>
+    <h1 class="alert alert-primary text-center text-white">Admin Login</h1>
+    <div class="container">
+        <form action="" onsubmit="adminLogin(event)" name="frm">
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <input type="email" name="email" class="form-control" placeholder="Enter email" id="email">
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" name="pass" class="form-control" placeholder="Enter password" id="pwd">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary pt-3 pb-3 pl-5 pr-5 mx-3 my-4" onsubmit="adminLogin(event)">Submit</button>
+                <button type="reset" class="btn btn-danger pt-3 pb-3 pl-5 pr-5 mx-3 my-4">Cancel</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        function adminLogin(e){
+            e.preventDefault();
+            console.log("test");
+            let aemail = frm.email.value;
+            let apassword = frm.pass.value;
+            let data = localStorage.getItem("admin_login");
+            if (data != null){
+                arr = JSON.parse(data);
+            }
+            else{
+                arr = [];
+            }
+            let newarray = arr.filter((items)=>{ 
+                return items.useremail === uemail && items.password == upassword;});
+            if(newarray.length > 0){
+                window.location = "admindashboard.html";
+                alert("Login Sucessfully");
+            }    
+            else{
+                alert("Invalid Username or Password");
+            }
+            frm.reset();
+        }
+    </script>
+ 
+
+</body>
+
+</html>  

@@ -1,0 +1,171 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/* Navigation Section */
+nav{
+    width: 100%;
+    height: 135px;
+    display: flex;
+    justify-content: space-between;
+}
+nav img{
+    margin: 5px 10px;
+   height: 90px;
+}
+.logo{
+    color: rgba(73,155,234,1);
+    font-family: cursive;
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 10px;
+}
+ul{
+    display: flex;
+}
+ul li{
+    margin:40px 63px 28px 50px;
+    margin:40px 63px 28px 50px;
+    list-style: none;
+}
+ul li a{
+    font-size: 30px;
+    font-family: cursive;
+    text-decoration: none;
+    color: rgba(73,155,234,1);
+}
+/* Banner-Section */
+#banner-section{
+    width: 100%;
+    background: url(images/banner-image..jpg);
+}
+.container{
+    margin: 0 auto;
+    width: 1400px;
+    height: 500px;
+}
+.banner{
+    width: 100%;
+}
+/*.banner-image{
+    width: 100%;
+    height: 500px;
+  position: relative;
+    z-index: -1;
+}*/
+/*::before::after{
+    content: "Unable to Choose suitable career ?";
+    font-size: 50px;
+    font-weight: bolder;
+    font-family: cursive;
+    position: absolute;
+    color: white;
+    left: 23%;
+    top: 40%;
+}
+.banner-image::before{
+    content: "Then You are in the right place.";
+    font-size: 50px;
+    font-weight: bolder;
+    font-family: cursive;
+    position: absolute;
+    color: white;
+    left: 23%;
+    top: 45%;
+    z-index: initial;
+    opacity: 2;
+}*/
+.banner h1{
+    padding: 103px 0 0 50px;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: cursive;
+}
+.banner h2{
+    padding: 20px 0 0 50px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: cursive;
+}
+/* Alumini-Section */
+#Alumini-section{
+    width: 100%;
+}
+.boxes{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+#Alumini-section h1{
+    margin: 50px auto;
+    text-align: center;
+    color: rgba(73,155,234,1);
+    font-family: cursive;
+    font-size: 50px;
+    font-weight: bolder;
+}
+.box{
+    margin-top: 20px;
+    width: 25%;
+    border: 4px solid rgba(73,155,234,1);
+}
+.box img{
+    height: 250px;
+    width: 100%;
+}
+.box h2{
+    font-family: cursive;
+    font-weight: bold;
+    padding: 10px;
+    color: rgba(73,155,234,1);
+}
+.box p{
+    font-family: cursive;
+    padding: 10px;
+    color: rgba(73,155,234,1);
+}
+/* Footer */
+footer{
+    margin-top: 50px;
+    width: 100%;
+    height: 200px;
+    background-color: rgba(73,155,234,1);
+}
+.footer-content{
+    display: flex;
+}
+footer h5{
+    color: white;
+    font-family: cursive;
+    font-size: 30px;
+}
+footer span{
+    color: white;
+    font-family: cursive;
+    font-size: 40px;
+    font-weight: bold;
+}
+.icons{
+    margin-right: 10%;
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.ficon{
+    margin: 50px auto;
+    height: 40px !important;
+    width: 40px !important;
+    background-color: white;
+    border-radius: 50%;
+    text-align: center;
+    padding: 10px;
+}
+    
+.fonticon{
+    text-align: center;
+    font-size: 30px !important;
+    color: rgba(73,155,234,1);
+    padding: 5px;
+}

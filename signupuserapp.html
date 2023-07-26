@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signupuserapp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css  ">
+    <link rel="shortcut icon" href="../images/studentlogo1.jpg" type="image/x-icon">
+    <title>The career signupuserapp</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div>
+                <img src="images/studentlogo1.jpg" alt="">
+                <h1 id="mainheading">The Career</h1>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="loginuserapp.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <form action="" name="frm" method="post" onsubmit="saveData(event)">
+        <div class="container">
+            <h1 class="heading">Sign Up</h1>
+            <table>
+                <tr>
+                    <td>
+                        <h4 class="headinginput">Enter Your Name: </h4>
+                        <input type="text" class="username" name="username">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4 class="headinginput">Enter Your Date of Birth: </h4>
+                        <div class="wholedate">
+                            <select name="Date" class="date">Date
+                                <option value="Date">Date</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                            </select>
+                            <select name="Month" class="date dmonth">Date
+                                <option value="Month">Month</option>
+                                <option value="Jan">Jan</option>
+                                <option value="Feb">Feb</option>
+                                <option value="Mar">Mar</option>
+                                <option value="Apr">Apr</option>
+                            </select>
+                            <select name="Year" class="date dyear">Date
+                                <option value="Year">Year</option>
+                                <option value="2001">2001</option>
+                                <option value="2002">2002</option>
+                                <option value="2003">2003</option>
+                                <option value="2004">2004</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4 class="headinginput">Enter Email: </h4>
+                        <input type="email" class="useremail" name="useremail">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4 class="headinginput">Enter Password: </h4>
+                        <input type="password" class="passw" name="passw">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <td colspan="1">
+                            <button id="btnsubmit" type="submit" onsubmit="saveData(event)">Submit</button>
+                            <button id="btnreset" type="reset">Reset</button>
+                        </td>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    <footer>
+    <div class="footer-content">
+        <h5>@Copyright <span>The Career</span> all Right Reserved.</h5>
+        <div class="icons">
+            <div class="ficon"><i class="fa fa-twitter fonticon " aria-hidden="true"></i></div>
+            <div class="ficon"><i class="fa fa-facebook fonticon" aria-hidden="true"></i></div>
+            <div class="ficon"><i class="fa fa-youtube-play fonticon" aria-hidden="true"></i></div>
+            <div class="ficon"><i class="fa fa-instagram fonticon" aria-hidden="true"></i></div>
+            <div class="ficon"><i class="fa fa-whatsapp fonticon" aria-hidden="true"></i></div>
+        </div>
+    </div>
+</footer>
+    <!-- ----------------------------------------------------------------------------- -->
+    <script>
+        function saveData(e){
+            e.preventDefault();
+            console.log("Test");
+            let uname = frm.username.value;
+            let uemail = frm.useremail.value;
+            let upassword= frm.passw.value;
+            let udate = frm.Date.value+"-"+frm.Month.value+"-"+frm.Year.value;
+            let data = localStorage.getItem("user-signup-details");
+            console.log(udate);
+            if (data!=null){
+                arr = JSON.parse(data);
+            }
+            else{
+                arr =[];
+            }
+            let newarray = arr.filter((items)=>{ 
+                return items.useremail === uemail;
+            })
+            if(newarray.length > 0){
+                alert("Email already exists");
+            }
+            else{
+                arr.push({"username": uname, "useremail":uemail, "password": upassword, "Dob": udate});
+                localStorage.setItem("user-signup-details", JSON.stringify(arr));
+                alert("Signup Sucessfully");
+            }
+            frm.reset();
+        }
+
+    </script>
+</body>
+
+</html>

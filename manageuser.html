@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/studentlogo1.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css  ">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Manage User</title>
+
+</head>
+<style>
+    .heading {
+        background-color: #9b9595;
+        font-size: 100px;
+        font-weight: bolder;
+    }
+
+    .mainnavbar {
+        background-color: #9b9595;
+
+    }
+
+    .navcontent {
+        font-size: 30px;
+        font-weight: bolder;
+        color: black;
+    }
+
+    .seconadaryheading {
+        background-color: #9b9595;
+        font-size: 70px;
+        font-weight: bolder;
+    }
+</style>
+
+<body>
+    <header>
+        <h1 class="text-center alert alert-primary text-white heading">Manage Users</h1>
+        <nav class="navbar navbar-expand-sm navbar-primary text-white mainnavbar">
+            <!-- Brand  -->
+            <a class="navbar-brand" href="#"><img src="../images/studentlogo1.jpg" alt=""></a>
+
+            <!-- Links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-white navcontent" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white navcontent" href="admindashboard.html">Admin Dashboard</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <h1 class="text-center alert alert-primary text-white seconadaryheading">User Data</h1>
+
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>User Email</th>
+                    <th>Password</th>
+                    <th>Date of Birth</th>
+                    <th>Status</th>
+                    <th>Delete User</th>
+                    <th>Edit User</th>
+                </tr>
+            </thead>
+            <tbody id="results">
+
+            </tbody>
+        </table>
+    </div>
+      <!-- The Modal -->
+      <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Modal Heading</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="" name="frm" method="post" onsubmit="updateData(event)">
+                    <div class="container">
+                        <h1 class="secondaryheading">Update</h1>
+                        <table>
+                            <tr>
+                                <td>
+                                    <h4 class="headinginput">Enter Your Name: </h4>
+                                    <input type="text" class="username" name="username">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4 class="headinginput">Enter Your Date of Birth: </h4>
+                                    <div class="wholedate">
+                                        <select name="Date" class="date">Date
+                                            <option value="Date">Date</option>
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                        </select>
+                                        <select name="Month" class="date dmonth">Date
+                                            <option value="Month">Month</option>
+                                            <option value="Jan">Jan</option>
+                                            <option value="Feb">Feb</option>
+                                            <option value="Mar">Mar</option>
+                                            <option value="Apr">Apr</option>
+                                        </select>
+                                        <select name="Year" class="date dyear">Date
+                                            <option value="Year">Year</option>
+                                            <option value="2001">2001</option>
+                                            <option value="2002">2002</option>
+                                            <option value="2003">2003</option>
+                                            <option value="2004">2004</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4 class="headinginput">Enter Email: </h4>
+                                    <input type="email" class="useremail" name="useremail">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4 class="headinginput">Enter Password: </h4>
+                                    <input type="password" class="passw" name="passw">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <td colspan="1">
+                                        <button id="btnsubmit" type="submit" onsubmit="updateData(event)">Update</button>
+                                        <button id="btnreset" type="reset">Reset</button>
+                                    </td>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+      
+    <script>
+        // get all data from signup details//
+        function getAllItems() {
+            let data = localStorage.getItem("user-signup-details");
+            if (data != null) {
+                user_array = JSON.parse(data);
+            }
+            else {
+                user_array = [];
+            }
+            let str = '';
+            user_array.forEach((items, index) => {
+                str += ` <tr>
+                <td>${items.username}</td>
+                <td>${items.useremail}</td>
+                <td>${items.password}</td>
+                <td>${items.Dob}</td>
+                <td>${items.status == 0 ? "<a href=''>Active</a>" : "<a href=''>Inactive</a>"}</td>
+                <td>
+                    <button class = 'btn btn-danger btn-sm' onclick = 'delete_user(${index})'>Delete</button>
+                </td>
+                <td>
+                    <button class = 'btn btn-primary btn-sm' data-toggle="modal" data-target="#myModal" onclick = 'edit_user(${index})'>Edit</button>
+                </td>
+
+            </tr>`;
+            })
+            document.getElementById("results").innerHTML = str;
+        }
+        getAllItems();
+       
+
+        // Delete Users//
+        function delete_user(id) {
+            let x = confirm("Do you really want to delete this acoount");
+            if (x == true) { 
+                let res = localStorage.getItem("user-signup-details");
+                if (res != null) {
+                    arr = JSON.parse(res);
+                }
+                else {
+                    arr = [];
+                }
+                let newarray = arr.filter((items, index) => {
+                    return id != index;
+                })
+                localStorage.setItem("user-signup-details", JSON.stringify(newarray));
+            }
+            else{
+                return false;
+            }
+            getAllItems();
+
+        }
+        let pid = "";
+        //Edit User//
+        function edit_user(xid){
+            console.log("test");
+            pid = xid;
+            let edit = localStorage.getItem("user-signup-details");
+            if (edit != null){
+                arr = JSON.parse(edit);
+            }
+            else{
+                arr = [];
+            }
+            let newarray = arr.filter((items, index)=>{
+                return xid == index;
+            })
+            console.log(newarray);
+            frm.username.value = newarray[0].username;
+            frm.useremail.value = newarray[0].useremail;
+            frm.passw.value = newarray[0].password;
+           
+        }
+        //update user detyails//
+        function updateData(e){
+            e.preventDefault();
+            let name = frm.username.value;
+            let email = frm.useremail.value;
+            let password = frm.passw.value;
+            let res = localStorage.getItem("user-signup-details");
+            if(res!=null){
+                user_arr = JSON.parse(res);
+            }
+            else{
+                user_arr = [];
+            }
+            user_arr[pid].username = name;
+            user_arr[pid].useremail = email;
+            user_arr[pid].password = password;
+            localStorage.setItem("user-signup-details", JSON.stringify(user_arr));
+            window.location = ("manageuser.html");
+
+        }
+        // Active / Inactive //
+    </script>
+</body>
+
+</html>

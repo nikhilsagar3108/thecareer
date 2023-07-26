@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signupuserapp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css  ">
+    <link rel="shortcut icon" href="../images/studentlogo1.jpg" type="image/x-icon">
+    <title>The career Loginuser</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div>
+                <img src="images/studentlogo1.jpg" alt="">
+                <h1 id="mainheading">The Career</h1>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="signupuserapp.html">Sign up</a></li>
+            </ul>
+        </nav>
+    </header>
+    <form action="" name="frm" method="post" onsubmit="loginPage(event)">
+        <div class="container">
+            <h1 class="heading">Login</h1>
+            <table>
+                
+                    <td>
+                        <h4 class="headinginput">Enter Email: </h4>
+                        <input type="email" class="useremail" name="useremail">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4 class="headinginput">Enter Password: </h4>
+                        <input type="password" class="passw" name="passw">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <td colspan="1">
+                            <button id="btnsubmit" type="submit" onsubmit="loginPage(event)">Submit</button>
+                            <button id="btnreset" type="reset">Cancel</button>
+                        </td>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    <footer>
+    <div class="footer-content">
+        <h5>@Copyright <span>The Career</span> all Right Reserved.</h5>
+        <div class="icons">
+            <div class="ficon"><i class="fa fa-twitter fonticon " aria-hidden="true"></i></div>
+            <div class="ficon"><i class="fa fa-facebook fonticon" aria-hidden="true"></i></div>
+            <div class="ficon"><i class="fa fa-youtube-play fonticon" aria-hidden="true"></i></div>
+            <div class="ficon"><i class="fa fa-instagram fonticon" aria-hidden="true"></i></div>
+            <div class="ficon"><i class="fa fa-whatsapp fonticon" aria-hidden="true"></i></div>
+        </div>
+    </div>
+</footer>
+    <!-- ----------------------------------------------------------------------------- -->
+    <script>
+        function loginPage(e){
+            e.preventDefault();
+            console.log("Test");
+            let uemail = frm.useremail.value;
+            let upassword= frm.passw.value;
+            let data = localStorage.getItem("user-signup-details");
+            if (data!=null){
+                arr = JSON.parse(data);
+            }
+            else{
+                arr =[];
+            }
+            let newarray = arr.filter((items)=>{ 
+                return items.useremail === uemail && items.password == upassword;
+            })
+            if(newarray.length > 0){
+                localStorage.setItem("user_details", JSON.stringify(newarray));
+                window.location = ("user_dashboard.html");
+                alert("Login Sucessfully");
+            }
+            else{
+                window.alert("Invalid Username or Password");
+                loginPage();
+            }
+            frm.reset();
+        }
+    </script>
+</body>
+
+</html>
